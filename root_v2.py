@@ -21,7 +21,7 @@ def main():
     # Selección de reporte y fechas en sidebar
     with st.sidebar:
         reporte_seleccionado = st.selectbox(
-            "Seleccione el reporte deseado:", list(reportes_disponibles.keys()))
+            "Select a Report:", list(reportes_disponibles.keys()))
         start_date = st.date_input("Seleccione la fecha de inicio:")
         end_date = st.date_input("Seleccione la fecha de fin:")
         submitted = st.button("Generar Reporte")
