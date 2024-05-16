@@ -7,7 +7,7 @@ def main():
     # Configuración del layout del aplicativo a modo wide
     st.set_page_config(layout="wide")
 
-    st.title("Reportes de Manufactura")
+    st.title("Manufacturing Reports")
 
     # Definir diccionario de reportes disponibles con ID
     reportes_disponibles = {
@@ -22,9 +22,9 @@ def main():
     with st.sidebar:
         reporte_seleccionado = st.selectbox(
             "Select a Report:", list(reportes_disponibles.keys()))
-        start_date = st.date_input("Seleccione la fecha de inicio:")
-        end_date = st.date_input("Seleccione la fecha de fin:")
-        submitted = st.button("Generar Reporte")
+        start_date = st.date_input("Start Date:")
+        end_date = st.date_input("End Date:")
+        submitted = st.button("Export Data")
 
     if submitted:
         st.session_state.data = generar_reporte(
@@ -100,11 +100,11 @@ def main():
 
         # Botón para descargar el reporte completo
         csv = data.to_csv(index=False)
-        st.download_button(label="Descargar Reporte Completo",
-                           data=csv, file_name="reporte.csv", mime="text/csv")
+        st.download_button(label="Download Report",
+                           data=csv, file_name="mmdataexport.csv", mime="text/csv")
     else:
         st.error(
-            "No se pudo generar el reporte. Por favor, intente nuevamente o genere un nuevo reporte.")
+            "No Data Available yet or no settings have been selected. Please submit the form.")
 
 
 if __name__ == "__main__":
